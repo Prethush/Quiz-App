@@ -14,7 +14,7 @@ class Questions extends React.Component {
     }
 
     componentDidMount = () => {
-        console.log("component mount");
+        
         if(localStorage.results || localStorage.currentStep){
             if(localStorage.currentStep === 10) {
                 this.setState({currentStep: null, result: []});
