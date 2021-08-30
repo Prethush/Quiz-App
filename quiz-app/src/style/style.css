@@ -32242,6 +32242,11 @@ video {
   content: none;
 }
 
+meter::-webkit-meter-optimum-value {
+  background: #34D399
+  /* Green */
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

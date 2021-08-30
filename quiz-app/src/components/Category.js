@@ -13,6 +13,7 @@ class Category extends React.Component {
     }
 
     componentDidMount = () => {
+        console.log("component mount");
         fetch("https://opentdb.com/api_category.php")
         .then((res) => res.json())
         .then((data) => {
@@ -23,28 +24,31 @@ class Category extends React.Component {
     handleClick = ({target}) => {
         let {id, type} = target.dataset;
         if(type === "category") {
-            this.setState({categorySelected: id}, () => this.fetchData());
+            this.setState({categoryId: id}, () => this.fetchData());
         }else {
             this.setState({difficultyLevel: id}, () => this.fetchData());
         }
     }
 
     fetchData = () => {
-        let {categorySelected, difficultyLevel} = this.state;
-        if(difficultyLevel && categorySelected) {
-            categorySelected = Number(categorySelected);
+        let {categoryId, difficultyLevel} = this.state;
+        if(difficultyLevel && categoryId) {
+            categoryId = Number(categoryId);
 
-            fetch(`https://opentdb.com/api.php?amount=10&category=${categorySelected}&difficulty=${difficultyLevel}`)
+            fetch(`https://opentdb.com/api.php?amount=10&category=${categoryId}&difficulty=${difficultyLevel}&type=multiple`)
             .then((res) => res.json())
             .then((data) => {
-                console.log(data.results);
                 this.setState({questions: data.results});
             });
         }
     }
 
+    componentWillUnmount = () => {
+        this.setState({questions: null, difficultyLevel: null, categoryId: null});
+    }
+
     render() {
-       let {categorySelected, difficultyLevel} = this.state;
+       let {categoryId, difficultyLevel, questions} = this.state;
         return (
             < main>
                 <h2 className="text-center font-bold text-4xl">Categories</h2>
@@ -56,7 +60,7 @@ class Category extends React.Component {
                     <div className="flex flex-wrap px-12 py-12">
                     {
                         this.state.categories ? this.state.categories.map(c => {
-                        return <span key={c.id} className={categorySelected === String(c.id) ? "bg-red-500 py-2 px-3 my-2 mx-2 cursor-pointer text-white rounded-lg": "bg-blue-800 py-2 px-3 my-2 mx-2 cursor-pointer text-white rounded-lg hover:bg-blue-600"} data-type="category" data-id={c.id} onClick={(e) => this.handleClick(e)}>{c.name}</span>
+                        return <span key={c.id} className={categoryId === String(c.id) ? "bg-red-500 py-2 px-3 my-2 mx-2 cursor-pointer text-white rounded-lg": "bg-blue-800 py-2 px-3 my-2 mx-2 cursor-pointer text-white rounded-lg hover:bg-blue-600"} data-type="category" data-id={c.id} onClick={(e) => this.handleClick(e)}>{c.name}</span>
                         }): ""
                     }             
                                 
@@ -79,10 +83,10 @@ class Category extends React.Component {
                     <div className="text-center py-8">
                         
                         <Link to={{
-                            pathname: `/questions/${categorySelected}/${difficultyLevel}`,
+                            pathname: `/questions/${categoryId}/${difficultyLevel}`,
                             state: {questions: this.state.questions}
                         }}>
-                            <button className={categorySelected && difficultyLevel ? "visible bg-black text-white py-2 px-3 rounded-lg font-bold": "hidden"}>Start Quiz</button>
+                            <button className={categoryId && difficultyLevel && questions? "visible bg-black text-white py-2 px-3 rounded-lg font-bold": "hidden"}>Start Quiz</button>
                         </Link>
                         
                     </div>
