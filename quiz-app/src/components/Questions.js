@@ -4,27 +4,27 @@ import Result from "./Result";
 
 class Questions extends React.Component {
 
-    constructor(props) {
-        super();
-        this.state = {
-            currentStep: 0,
-            selectedAnswer: null,
-            result: []
-        }
-    }
+    // constructor(props) {
+    //     super();
+    //     this.state = {
+    //         currentStep: 0,
+    //         selectedAnswer: null,
+    //         result: []
+    //     }
+    // }
 
-    componentDidMount = () => {
+    // componentDidMount = () => {
         
-        if(localStorage.results || localStorage.currentStep){
-            if(localStorage.currentStep === 10) {
-                this.setState({currentStep: null, result: []});
-            }else {
-                this.setState({currentStep: JSON.parse(localStorage.currentStep), result: JSON.parse(localStorage.results)});
-            }
+    //     if(localStorage.results || localStorage.currentStep){
+    //         if(localStorage.currentStep === 10) {
+    //             this.setState({currentStep: null, result: []});
+    //         }else {
+    //             this.setState({currentStep: JSON.parse(localStorage.currentStep), result: JSON.parse(localStorage.results)});
+    //         }
            
-        }
+    //     }
         
-    }
+    // }
 
     componentWillUnmount = () => {
         console.log("componet unmount");
