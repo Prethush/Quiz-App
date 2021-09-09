@@ -4,14 +4,14 @@ import Result from "./Result";
 
 class Questions extends React.Component {
 
-    // constructor(props) {
-    //     super();
-    //     this.state = {
-    //         currentStep: 0,
-    //         selectedAnswer: null,
-    //         result: []
-    //     }
-    // }
+    constructor(props) {
+        super();
+        this.state = {
+            currentStep: 0,
+            selectedAnswer: null,
+            result: []
+        }
+    }
 
     // componentDidMount = () => {
         
@@ -26,10 +26,10 @@ class Questions extends React.Component {
         
     // }
 
-    componentWillUnmount = () => {
-        console.log("componet unmount");
-        localStorage.clear();
-    }
+    // componentWillUnmount = () => {
+    //     console.log("componet unmount");
+    //     localStorage.clear();
+    // }
 
     nextStep = () => {
         let {currentStep, selectedAnswer} = this.state;
