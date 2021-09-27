@@ -43,7 +43,7 @@ class Questions extends React.Component {
     selectOption = (event, arr, index) => {
         console.log(index);
         let {useranswer} = event.target.dataset;
-        let result = this.state.result;
+        let result = [...this.state.result];
         result[index] = {question: arr.question, userAnswer: useranswer, correctAnswer: arr.correct_answer};
         this.setState({selectedAnswer: useranswer, result}, () => this.handleLocalStorage());
     }
