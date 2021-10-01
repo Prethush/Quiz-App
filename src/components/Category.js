@@ -50,7 +50,7 @@ class Category extends React.Component {
     render() {
        let {categoryId, difficultyLevel, questions} = this.state;
         return (
-            < main className="pb-12">
+            < main className="pb-16">
                 <h2 className="text-center font-bold text-4xl">Categories</h2>
                 {
                     !this.state.categories && <h2 className="text-center font-bold py-4">Loading...</h2>
