@@ -50,7 +50,7 @@ class Category extends React.Component {
     render() {
        let {categoryId, difficultyLevel, questions} = this.state;
         return (
-            < main className="pb-16">
+            < main>
                 <h2 className="text-center font-bold text-4xl">Categories</h2>
                 {
                     !this.state.categories && <h2 className="text-center font-bold py-4">Loading...</h2>
@@ -61,7 +61,7 @@ class Category extends React.Component {
                           {/* Displaying question cateogories */}
                     {
                         this.state.categories ? this.state.categories.map(c => {
-                        return <span key={c.id} className={categoryId === String(c.id) ? "bg-red-500 py-2 px-3 my-2 mx-2 cursor-pointer text-white rounded-lg": "bg-blue-800 py-2 px-3 my-2 mx-2 cursor-pointer text-white rounded-lg hover:bg-blue-600"} data-type="category" data-id={c.id} onClick={(e) => this.handleClick(e)}>{c.name}</span>
+                        return <span key={c.id} className={" py-2 px-3 my-2 mx-2 cursor-pointer text-white rounded-lg " + (categoryId === String(c.id) ? " bg-red-500 ": " bg-blue-800 hover:bg-blue-600" )} data-type="category" data-id={c.id} onClick={(e) => this.handleClick(e)}>{c.name}</span>
                         }): ""
                     }             
                                 
@@ -72,18 +72,18 @@ class Category extends React.Component {
                             {/* Displaying difficulty cateogories */}
                             <h3 className="text-center font-bold text-2xl mb-6">Select Difficulty Level</h3>
                             <div className="flex justify-center">
-                                <span className={difficultyLevel === "easy" ? "bg-red-500 text-white py-2 px-3 rounded-lg mx-3 cursor-pointer": "bg-blue-800 text-white py-2 px-3 rounded-lg mx-3 hover:bg-blue-600 cursor-pointer"} data-type="difficultyLevel" data-id="easy" onClick={(e) => this.handleClick(e)}>Easy</span>
+                                <span className={"text-white py-2 px-3 rounded-lg mx-3  cursor-pointer" + (difficultyLevel === "easy" ? " bg-red-500 ": " bg-blue-800 hover:bg-blue-600" )} data-type="difficultyLevel" data-id="easy" onClick={(e) => this.handleClick(e)}>Easy</span>
 
-                                <span className={difficultyLevel === "medium" ? "bg-red-500 text-white py-2 px-3 rounded-lg mx-3 cursor-pointer": "bg-blue-800 text-white py-2 px-3 rounded-lg mx-3 hover:bg-blue-600 cursor-pointer"} data-type="difficultyLevel" data-id="medium" onClick={(e) => this.handleClick(e)}>Medium</span>
+                                <span className={"text-white py-2 px-3 rounded-lg mx-3  cursor-pointer" + (difficultyLevel === "medium" ? " bg-red-500 ": " bg-blue-800 hover:bg-blue-600" )} data-type="difficultyLevel" data-id="medium" onClick={(e) => this.handleClick(e)}>Medium</span>
 
-                                <span className={difficultyLevel === "hard" ? "bg-red-500 text-white py-2 px-3 rounded-lg mx-3 cursor-pointer": "bg-blue-800 text-white py-2 px-3 rounded-lg mx-3 hover:bg-blue-600 cursor-pointer"} data-type="difficultyLevel" data-id="hard" onClick={(e) => this.handleClick(e)}>Hard</span>
+                                <span className={"text-white py-2 px-3 rounded-lg mx-3  cursor-pointer" + (difficultyLevel === "hard" ? " bg-red-500 ": " bg-blue-800 hover:bg-blue-600" )} data-type="difficultyLevel" data-id="hard" onClick={(e) => this.handleClick(e)}>Hard</span>
                             </div>
                         </>
                         ) : ""
                     }
 
                     <div className="text-center py-8">
-                        {/* quiz start */}
+                        {/* start quiz*/}
                         <Link to={{
                             pathname: `/questions/${categoryId}/${difficultyLevel}`,
                             state: {questions: this.state.questions}

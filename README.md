@@ -1,6 +1,6 @@
 # Quiz App
 
-This is a quiz application. User can select question categories and difficulty level. There will be a total of 10 questions user can view the result at last. This app is hosted on netlify
+This is a quiz application. User can select question categories and difficulty level. There will be a total of 10 questions user can view the result at last. This app is hosted on netlify.
 
 ## Installation
 

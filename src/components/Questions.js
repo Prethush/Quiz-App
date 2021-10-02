@@ -75,7 +75,7 @@ class Questions extends React.Component {
             return (
                 <>
                 {
-                    questions.length !== 0 ? (<section className="flex flex-col items-center py-4">
+                    questions.length !== 0 ? (<section className="flex flex-col items-center pt-8 pb-20">
                     <div className="text-gray-800 w-1/2">
                         <h2 className="text-xl">Question {currentStep + 1}/10</h2>
                             < fieldset className="bg-white py-8">
