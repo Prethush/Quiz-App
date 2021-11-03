@@ -12,7 +12,7 @@ class Category extends React.Component {
         }
     }
 
-    componentDidMount = () => {
+    componentDidMount() {
         console.log("component mount");
         fetch("https://opentdb.com/api_category.php")
         .then((res) => res.json())
@@ -43,7 +43,7 @@ class Category extends React.Component {
         }
     }
 
-    componentWillUnmount = () => {
+    componentWillUnmount() {
         this.setState({questions: null, difficultyLevel: null, categoryId: null});
     }
 

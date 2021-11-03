@@ -12,7 +12,7 @@ class Questions extends React.Component {
         }
     }
 
-    // componentDidMount = () => {
+    // componentDidMount() {
         
     //     if(localStorage.results || localStorage.currentStep){
     //         if(localStorage.currentStep === 10) {
@@ -25,7 +25,7 @@ class Questions extends React.Component {
         
     // }
 
-    // componentWillUnmount = () => {
+    // componentWillUnmount() {
     //     console.log("componet unmount");
     //     localStorage.clear();
     // }
